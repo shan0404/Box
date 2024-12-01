@@ -1,4 +1,4 @@
-name: TvBox Build
+name: Build Debug
 
 on:
 #  push:
@@ -30,7 +30,7 @@ jobs:
       - name: Build With Gradle
         run: |
           chmod +x gradlew
-          ./gradlew assemblerelease --build-cache --parallel --daemon --warning-mode all
+          ./gradlew assembleDebug --build-cache --parallel --daemon --warning-mode all
       - name: Prepare App
         run: |
           mkdir -p ${{ github.workspace }}/apk/
@@ -40,5 +40,5 @@ jobs:
       - name: Upload App To Artifact
         uses: actions/upload-artifact@v4.4.3
         with:
-          name: com.github.tvbox.osc
+          name: com.github.tvbox.osc.zip
           path: ${{ github.workspace }}/apk/*
