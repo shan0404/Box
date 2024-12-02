@@ -205,12 +205,6 @@ public class OkHttpDataSource extends BaseDataSource implements HttpDataSource {
         }
 
         int responseCode = response.code();
-        //修复苹果403拒绝访问
-        if (responseCode == 403 || responseCode == 404 || responseCode == 500) {
-            opened = true;
-            transferStarted(dataSpec);
-            return dataSpec.length != C.LENGTH_UNSET ? dataSpec.length : 0;
-        }
         // Check for a valid response code.
         if (!response.isSuccessful()) {
             if (responseCode == 416) {
