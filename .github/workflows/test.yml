@@ -30,6 +30,7 @@ jobs:
       - name: Build With Gradle
         run: |
           chmod +x gradlew
+          ./gradlew clean
           ./gradlew assembleDebug --build-cache --parallel --daemon --warning-mode all
       - name: Prepare App
         run: |
